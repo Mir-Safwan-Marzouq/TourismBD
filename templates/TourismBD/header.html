@@ -1,0 +1,37 @@
+{% load static %}
+<div class="header">
+  <div class="menubar">
+      <nav class="navbar navbar-expand-lg navbar-light menua">
+          <div class="container">
+            <a class="navbar-brand logo" href="#"><img src="{% static "Images/Poster/logo.png" %}" class="img-fluid" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/#explore">Explore</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/about/">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link navl" href="/feedback/">Feedback</a>
+                </li>
+              </ul>
+              <form class="d-flex" method="post" action="/search_district/">
+                {% csrf_token %}
+                <input class="form-control me-2 search_form" type="search" placeholder="Search Destination" aria-label="Search" name="searched">
+                <button class="btn btn-outline-success search_btn" type="submit">Search</button>
+              </form>
+            </div>
+          </div>
+        </nav>
+  </div>
+</div>

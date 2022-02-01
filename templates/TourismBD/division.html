@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TourBD-Division</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@1,700&display=swap" rel="stylesheet">
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "CSS/division.css" %}">
+
+
+</head>
+
+<body>
+      <!-- Navbar Section -->
+  {% include 'TourismBD/header.html' %}
+  <div class="banner2">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{{div.banner.url}}" height="450px" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-block">
+                <div class="container">
+                    <h2>{{div.heading}}</h2>
+                    <p id="h2description">{{div.headline}}</p>
+                </div>
+              </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+<!-- Introduction -->
+<div class="Introheading">
+    <div class="container">
+        <p>{{div.introHead|safe}}</p>
+    </div>
+</div>
+<div class="container">
+    <div class="introduction">
+        <div class="row">
+            <div class="col-md-6 introtext">
+               {{div.intro|safe}}
+            </div>
+            <div class="col-md-6 div_img">
+                <img src="{{div.image.url}}" class="img-fluid"  alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="district_table">
+  <div class="container">
+    <h2>District List of {{div.introHead}}</h2>
+    </div>
+    </div>
+    <div class="container">
+    <table class="table sticky">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Capital</th>
+        <th>Area km<sup>2</sup></th>
+        <th>Population</th>
+      </tr>
+      </thead>
+      {% for district in distrct %}
+      <tr class="trow">
+        <td><a href="{% url 'TourismBD:district' z=district.pk %}">{{district.name}}</a></td>
+        <td>{{district.headquarter}}</td>
+        <td>{{district.area}}</td>
+        <td>{{district.census2011}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+      </div>
+      <div class="division_history">
+        <div class="container">
+          <h2>History of {{div.introHead}}</h2>
+        </div>
+      </div>
+        <div class="container history_text">
+          {{div.history|safe}}
+        </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+</body>
+</html>

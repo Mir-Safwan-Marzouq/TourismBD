@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@1,700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+      <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css"> -->
+      <!-- <script src="https://kit.fontawesome.com/67c66657c7.js"></script> -->
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "CSS/style2.css" %}">
+    <title>District Search</title>
+    <style>
+      .searchResult{
+        padding-top:100px;
+      }
+      .search h2{
+        text-align:center;
+      }
+      .search h2:after{
+        content: '';
+        width: 20%;
+        height: 3px;
+        display: block;
+        background: linear-gradient(45deg,rgb(4, 83, 4),yellow);
+        margin-top: 10px;
+        position: relative;
+        top: 0;
+        left: 40%;
+      }
+      .card h5{
+        font-size:25px;
+        padding-bottom:10px;
+      }
+      .card{
+        margin-top:10px;
+        margin-bottom:10px;
+        background:linear-gradient(110deg, white 50%,rgb(207, 41, 41) 50%);
+      }
+      .searchbutton{
+        color:white;
+        background-color:rgb(16, 202, 40);
+      }
+      .searchbutton:hover{
+        color:white;
+        background-color: rgb(255, 102, 0);
+      }
+    </style>
+  </head>
+  <body>
+    {% include 'TourismBD/header.html' %}
+    <div class="searchResult">
+      <div class="container">
+        <div class="search">
+          <h2>Your Search Result</h2>
+          {% if searched %}
+            {% for i in place %}
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">{{i.name}}</h5>
+                  <a href="{% url 'TourismBD:district' z=i.pk %}" class="btn searchbutton">Go somewhere</a>
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            <h1>Hey you forgot to search</h1>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <!-- <div class="row">
+  <div class="col-sm-6">
+
+  </div>
+</div>-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudfare.com/ajax/libs/animateCSS/1.2.2/jquey.animatecss.min.js"></script>
+  </body>
+</html>

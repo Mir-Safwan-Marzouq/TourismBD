@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TourismBD-Feedback</title>
+    <script src="https://kit.fontawesome.com/67c66657c7.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            outline: none;
+            color: #fff;
+        }
+
+        .feedback_form {
+          padding-top: 90px;
+            display: flex;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        .container1{
+            width: 360px;
+            background-color: black;
+            box-shadow: 0 0 8px rgba(250,250,250,0.6);
+            opacity: 0.6;
+        }
+        .container1 form{
+            width: 100%;
+            text-align: center;
+            padding: 25px 20px;
+        }
+        .feedback_form form h1{
+            padding: 10px 0;
+        }
+        .feedback_form form.id{
+            position: relative;
+        }
+        .feedback_form .id i{
+            position: absolute;
+            font-size: 20px;
+            /* top: 50%;  */
+            /* right: 20px; */
+            transform: translate(-200%,100%);
+        }
+        .feedback_form form input{
+            width: 100%;
+            height: 50px;
+            margin: 4px 0;
+            border: 1px solid #5c5c5c;
+            border-radius: 5px;
+            background: #181717;
+            padding: 0 15px;
+            font-size: 20px;
+            padding-right: 45px;
+        }
+        .feedback_form form textarea{
+            padding: 5px 15px;
+            border: 1px solid #5c5c5c;
+            border-radius: 10px;
+            background: #181717;
+            font-size: 20px;
+            width: 100%;
+            margin: 4px 0;
+        }
+        .feedback_form form button{
+            margin-top: 5px;
+            border: none;
+            background: rgb(16, 202, 40);
+            padding: 10px 0;
+            width: 100%;
+            font-size: 20px;
+            font-weight: 800;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .feedback_form form button:hover{
+          background: rgb(255, 102, 0);
+        }
+        section{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background: url("{% static "Images/Poster/Feedback.jpg"%}");
+            background-size: cover;
+            background-position: center;
+            filter:brightness(30%);
+        }
+
+        .feedback_form form input:focus,form textarea:focus{
+            border: 1px solid #00ff4c;
+            color: #00ff4c;
+            transition: all linear 0.3s ease;
+        }
+        .feedback_form form input:focus::placeholder,form textarea:focus::placeholder{
+            padding-left: 4px;
+            color: #00ff4c;
+            transition: all linear 0.3s ease;
+        }
+        .feedback_form form input:focus+i{
+            color: #00ff4c;
+            transition: all linear 0.3s ease;
+        }
+
+    </style>
+      <link rel="stylesheet" href="{% static "CSS/style2.css" %}">
+</head>
+
+<body>
+  {% include 'TourismBD/header.html' %}
+  <div class="feedback_form">
+    <section></section>
+    <div class="container1">
+        <form method="post" action="/feedback/">
+          {% csrf_token %}
+            <h1>Feedback</h1>
+            <p>Your Suggestions Make Us Strong</p>
+            <div class="id">
+                <input type="text" name="fullName" placeholder="Full Name" onclick="">
+                <i class="far fa-user"></i>
+            </div>
+            <div class="id">
+                <input type="email" name="emailAddress" placeholder="Email Address" id="">
+                <i class="far fa-envelope"></i>
+            </div>
+            <textarea name="feedbackText" id="" cols="15" rows="5" placeholder="Enter Your Opinion Here"></textarea>
+            <button>Send</button>
+        </form>
+    </div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
